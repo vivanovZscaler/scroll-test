@@ -32,7 +32,7 @@ export default function AnimatedScrollView({cards = [], minScale = 0, buttonRowS
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(Array.from({length: cards.length}));
 
-  const handleScroll = ({nativeEvent: {contentOffset: { y } } }) => setOffset(y);
+  const handleScroll = ({nativeEvent: {contentOffset: { y } } }) => {console.log('scrolled'); setOffset(y);}
 
   const handleLayout = ({nativeEvent: {layout = {}} = {} }, index) => {
     const {width: w, height: h} = layout;
@@ -58,6 +58,7 @@ export default function AnimatedScrollView({cards = [], minScale = 0, buttonRowS
           alwaysBounceVertical={false}
           contentInsetAdjustmentBehavior="never"
           onScroll={handleScroll}
+          scrollEventThrottle={10}
           {...props}
         >
           {cards.map(({card, noScale = false, position = 'left'}, index) => {

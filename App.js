@@ -25,7 +25,7 @@ const ButtonTemplate = ({index}) => (
 );
 
 export default function App() {
-  const cards = Array.from({length: 8}).map((_, index) => ({
+  const cards = Array.from({length: 5}).map((_, index) => ({
     button: <ButtonTemplate index={index} />,
     card: <CardTemplate index={index} />,
     noScale: index === 4,
